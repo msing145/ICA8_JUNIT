@@ -12,7 +12,8 @@ class urinalsTest {
 
         System.out.println("====== Manmeet Singh == TEST TWO EXECUTED =======");
         int expected  = 1;
-        int actual = urinals.countUrinals("10001");
+        int actual = urinals.countUrinals();
+
 
 
         assertEquals(expected, actual, "Test case executed");

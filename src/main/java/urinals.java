@@ -3,8 +3,7 @@
 Author : Manmeet Singh
  */
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 public class urinals {
@@ -16,20 +15,41 @@ public class urinals {
 
     }
 
-    public void readFile(){
+
+
+    public String readFile(){
+
+
+        StringBuilder sb = new StringBuilder();
+
+        FileInputStream inputStream=null;
 
         try {
-            File myObj = new File("test.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                System.out.println(data);
+            // Getting ClassLoader obj
+            ClassLoader classLoader = this.getClass().getClassLoader();
+            // Getting resource(File) from class loader
+            File configFile=new File(classLoader.getResource("test").getFile());
+
+            inputStream = new FileInputStream(configFile);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
             }
-            myReader.close();
+
+            reader.close();
+
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+
+            e.printStackTrace();
+        }catch (IOException e) {
+
             e.printStackTrace();
         }
+
+
+        return sb.toString();
+
 
     }
 
@@ -38,9 +58,9 @@ public class urinals {
     }
 
 
-    public int countUrinals(String input){
+    public int countUrinals(){
 
-        
+        String input = readFile();
 
 
         char[] arr = input.toCharArray();
