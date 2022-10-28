@@ -18,6 +18,12 @@ class urinalsTest {
         assertEquals(expected, actual, "Test case executed");
 
     }
+    @Test
+    void getString(){
+        String expected = "====== Manmeet Singh == TEST TWO EXECUTED =======";
+        String actual = urinals.getString();
+        assertEquals(expected, actual,"Test Case executed");
+    }
 
 
 }

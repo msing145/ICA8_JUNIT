@@ -12,6 +12,10 @@ public class urinals {
 
     }
 
+    public String getString(){
+        return "====== Manmeet Singh == TEST TWO EXECUTED =======";
+    }
+
 
     public int countUrinals(String input){
 
