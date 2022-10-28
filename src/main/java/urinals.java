@@ -25,9 +25,9 @@ public class urinals {
         FileInputStream inputStream=null;
 
         try {
-            // Getting ClassLoader obj
+
             ClassLoader classLoader = this.getClass().getClassLoader();
-            // Getting resource(File) from class loader
+            
             File configFile=new File(classLoader.getResource("test").getFile());
 
             inputStream = new FileInputStream(configFile);
@@ -49,6 +49,22 @@ public class urinals {
 
 
         return sb.toString();
+
+
+    }
+
+    public void writeFile(int val){
+
+        try{
+            File obj = new File("out.txt");
+            FileOutputStream fos = new FileOutputStream(obj);
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+            bw.write(val);
+            bw.newLine();
+            bw.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
 
     }
